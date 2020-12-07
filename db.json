@@ -1,0 +1,25 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Json",
+      "price": 200,
+      "stock": 4
+    },
+    {
+      "id": 2,
+      "title": "Dream",
+      "price": 100,
+      "stock": 3
+    },
+    {
+      "id": 3,
+      "title": "Brain",
+      "price": 150,
+      "stock": 2
+    }
+  ],
+  "carts": [
+
+  ]
+}

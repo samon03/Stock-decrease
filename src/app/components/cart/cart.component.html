@@ -1,0 +1,13 @@
+<div *ngIf="cart.length == 0" class="aler alert-info m-2 p-2">
+  Your Cart is Empty.
+</div>
+
+<div class="card">
+  <ul class="list-group list-group-flush" *ngFor="let item of cart">
+    <li class="list-group-item">
+      <span>{{ item.productTitle }}</span> x <span>{{ item.qty }}</span> :
+        <strong>${{ item.productPrice * item.qty }}</strong>
+    </li>
+  </ul>
+</div>
+

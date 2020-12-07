@@ -1,0 +1,9 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{ pro.title }}</h5>
+    <p class="card-text text-muted">${{ pro.price }}.00</p>
+    <p class="text-muted">Available stock: <b>{{ pro.stock }}</b></p>
+    <button type="button" class="btn btn-primary" *ngIf="pro.stock != 0" (click)="addToCart()">Add</button>
+    <button type="button" class="btn btn-primary-disable" *ngIf="pro.stock == 0" (click)="addToCart()">Add</button>
+  </div>
+</div>
