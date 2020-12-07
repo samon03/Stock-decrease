@@ -17,7 +17,6 @@ export class ProductService {
   }
 
   putProduct(product: Product): Observable<Product[]>{
-    product.stock = product.stock - 1;
-    return this.http.post<Product[]>(productUrl, product.stock);
+    return this.http.put<Product[]>(`${productUrl}/${product.id}`, product);
   }
 }

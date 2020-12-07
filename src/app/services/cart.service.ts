@@ -1,9 +1,12 @@
+import { ProductService } from './product.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Cart } from '../models/cart';
 import { Product } from '../models/product';
+
+const productUrl = "http://localhost:3000/products";
 
 const cartUrl = "http://localhost:3000/carts";
 
@@ -12,7 +15,10 @@ const cartUrl = "http://localhost:3000/carts";
 })
 export class CartService {
 
-  constructor(private http: HttpClient) { }
+  stock;
+
+  constructor(private http: HttpClient,
+    private productService: ProductService) { }
 
   getCart(): Observable<Cart[]> {
     return this.http.get<Cart[]>(cartUrl).pipe(
@@ -46,9 +52,8 @@ export class CartService {
 
   postCartItem(product: Product): Observable<any>
   {
-    console.log("Befor: " + product.stock);
     product.stock = product.stock - 1;
-    console.log("After: " + product.stock);
+    this.productService.putProduct(product).subscribe();
     return this.http.post(cartUrl, {product});
   }
 }
